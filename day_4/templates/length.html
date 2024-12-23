@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Length Conversion</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Conversion App</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="/temperature">Temperature</a></li>
+                <li class="nav-item"><a class="nav-link" href="/length">Length</a></li>
+                <li class="nav-item"><a class="nav-link" href="/results">Results</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="mt-5">Length Conversion</h1>
+        <form method="POST" class="mt-3">
+            <div class="form-group">
+                <label for="length">Length:</label>
+                <input type="number" id="length" name="length" step="0.01" value="{{ length }}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="unit">Convert:</label>
+                <select name="unit" id="unit" class="form-control">
+                    <option value="cm" {% if unit == 'cm' %}selected{% endif %}>Centimeters to Inches</option>
+                    <option value="in" {% if unit == 'in' %}selected{% endif %}>Inches to Centimeters</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Convert</button>
+        </form>
+        {% if result is not none %}
+            <h2 class="mt-3">Result: {{ result }}</h2>
+        {% endif %}
+        <a href="/" class="btn btn-secondary mt-3">Back to Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h1 class="h4 mb-0">Add New Task</h1>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.title.label(class="form-label") }} {{
+                        form.title(class="form-control", placeholder="Enter task
+                        title") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.description.label(class="form-label") }} {{
+                        form.description(class="form-control", rows="4",
+                        placeholder="Enter task description") }}
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a
+                            href="{{ url_for('main.index') }}"
+                            class="btn btn-outline-secondary"
+                        >
+                            <i class="fas fa-arrow-left"></i> Back
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save Task
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
