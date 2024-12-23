@@ -15,6 +15,7 @@ conda activate py311
 pip install -r requirements.txt 
 conda deactivate
 
+conda env list
 
 ## Log
 
