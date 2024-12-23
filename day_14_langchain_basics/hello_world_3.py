@@ -1,7 +1,7 @@
 # from langchain.llms import OpenAI
 from langchain_community.llms import OpenAI
 # from langchain_openai import OpenAI
-from langchain.chains import LLMChain, RunnableSequence
+from langchain.chains import LLMChain #, RunnableSequence
 from langchain.prompts import PromptTemplate
 import os
 
