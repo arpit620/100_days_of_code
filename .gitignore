@@ -2,3 +2,10 @@
 this_studio.iml
 settings.json
 .viminfo
+.env
+*.pyc
+PKG-INFO
+SOURCES.txt
+__pycache__/*
+__pycache__
+*.egg-info

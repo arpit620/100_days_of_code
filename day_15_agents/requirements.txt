@@ -1,0 +1,9 @@
+langchain
+langchain-mistralai
+langchain-community
+langchain-openai
+langchain-ollama
+langchainhub
+python-dotenv
+langchain-mistralai
+beautifulsoup4
