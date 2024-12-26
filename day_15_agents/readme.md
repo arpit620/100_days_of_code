@@ -24,3 +24,7 @@ Uninstall the package after use to ensure
 ### LangSmith
 To add observability and tracing, just add LangSmith for the details. 
 Just add the details in `.env` file and it will handle the rest. 
+https://smith.langchain.com/
+
+### Reference Project: 
+https://github.com/emarco177/ice_breaker/tree/main
