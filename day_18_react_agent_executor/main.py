@@ -11,6 +11,7 @@ from langchain.prompts import PromptTemplate
 from langchain.schema import AgentAction, AgentFinish
 from langchain.tools import Tool
 from langchain.tools.render import render_text_description
+from openai import OpenAI
 
 from callbacks import AgentCallbackHandler
 
@@ -44,6 +45,20 @@ def openai_supported_call():
             api_key=openai_api_key, 
             base_url=BASE_URL, 
             model_name=MODEL_NAME,
+            temperature=0,
+            stop=["\nObservation", "Observation"],
+            callbacks=[AgentCallbackHandler()],
+            )
+    return llm
+
+def github_openai_supported_call():
+    openai_api_key = os.environ.get("GITHUB_TOKEN")
+    endpoint = "https://models.inference.ai.azure.com"
+    model_name = "gpt-4o-mini"
+    llm = ChatOpenAI(
+            api_key=openai_api_key, 
+            base_url=endpoint, 
+            model=model_name,
             temperature=0,
             stop=["\nObservation", "Observation"],
             callbacks=[AgentCallbackHandler()],
@@ -93,14 +108,9 @@ if __name__ == "__main__":
         tool_names=", ".join([t.name for t in tools]),
     )
 
-    # llm = ChatOpenAI(
-    #     temperature=0,
-    #     stop=["\nObservation", "Observation"],
-    #     callbacks=[AgentCallbackHandler()],
-    # )
-
-    llm = openai_supported_call()
+    # llm = openai_supported_call()
     # llm = mistral_ai()
+    llm = github_openai_supported_call()
 
     intermediate_steps = []
     agent = (
@@ -117,7 +127,7 @@ if __name__ == "__main__":
     while not isinstance(agent_step, AgentFinish):
         agent_step: Union[AgentAction, AgentFinish] = agent.invoke(
             {
-                "input": "What is the length of the word: DOG",
+                "input": "What is the length of the word: HELLO",
                 "agent_scratchpad": intermediate_steps,
             }
         )
